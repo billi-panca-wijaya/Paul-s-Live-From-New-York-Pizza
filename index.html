@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul's Live From New York Pizza | Pizza Deals & Delivery</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cloudassetskita.com/uploads/ico2-9cad5dee.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pizza-red': '#D32F2F',
+                        'pizza-dark': '#1A1A1A',
+                        'pizza-gold': '#FBC02D',
+                        'off-white': '#F9F9F9'
+                    },
+                    fontFamily: {
+                        'heading': ['Oswald', 'sans-serif'],
+                        'body': ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://cloudassetskita.com/uploads/livefromnewyorkpizzaheader-90a5ccac.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body text-gray-800 bg-off-white">
+
+    <!-- Navigation -->
+    <nav class="bg-pizza-dark text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="https://cloudassetskita.com/uploads/23709lfny-statue-color-on-black-2648fc67.png" alt="Logo" class="h-14 w-auto">
+                    <a href="#" class="font-heading text-xl md:text-2xl font-bold tracking-wider uppercase">Paul's Live From NY Pizza</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center font-bold">
+                    <a href="#home" class="hover:text-pizza-red transition">Home</a>
+                    <a href="#menu" class="hover:text-pizza-red transition">Menu</a>
+                    <a href="#locations" class="hover:text-pizza-red transition">Locations</a>
+                    <a href="#about" class="hover:text-pizza-red transition">About</a>
+                    <a href="#contact-reservations" class="hover:text-pizza-red transition">Contact & Reservations</a>
+                    <a href="https://paulslivefromnewyorkpizza.com/" target="_blank" class="bg-pizza-red hover:bg-red-700 text-white px-5 py-2 rounded uppercase text-sm tracking-wide transition">Order Online</a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i data-lucide="menu" class="h-8 w-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-700">
+            <div class="flex flex-col p-4 space-y-4 font-bold text-center">
+                <a href="#home" class="block hover:text-pizza-red">Home</a>
+                <a href="#menu" class="block hover:text-pizza-red">Menu</a>
+                <a href="#locations" class="block hover:text-pizza-red">Locations</a>
+                <a href="#about" class="block hover:text-pizza-red">About</a>
+                <a href="#contact-reservations" class="block hover:text-pizza-red">Reservations</a>
+                <a href="https://paulslivefromnewyorkpizza.com/" target="_blank" class="block bg-pizza-red py-2 rounded text-white">Order Online</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-bg h-[80vh] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-4xl animate-fade-in-up">
+            <h1 class="font-heading text-5xl md:text-7xl font-bold mb-4 uppercase drop-shadow-lg">Authentic NY Style Pizza</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Real Deals & Real Delivery. Taste the Big Apple in every bite.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#menu" class="bg-white text-pizza-dark px-8 py-3 rounded font-bold uppercase tracking-wider hover:bg-gray-200 transition">View Menu</a>
+                <a href="https://paulslivefromnewyorkpizza.com/" target="_blank" class="bg-pizza-red text-white px-8 py-3 rounded font-bold uppercase tracking-wider hover:bg-red-700 transition">Order Delivery</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Snippet -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <i data-lucide="chef-hat" class="mx-auto h-12 w-12 text-pizza-red mb-4"></i>
+            <h2 class="font-heading text-4xl font-bold mb-6 text-pizza-dark">Welcome to Paul's</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                We bring the authentic taste of New York City straight to your table. From our hand-tossed dough to our secret family sauce recipes, every slice is a tribute to tradition. Whether you are craving a classic cheese slice or a fully loaded specialty pie, Paul's Live From New York Pizza delivers quality you can taste.
+            </p>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-16 bg-pizza-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-5xl font-bold text-pizza-red uppercase">Our Locations</h2>
+                <p class="text-gray-400 mt-2">Visit us at one of our three convenient locations.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Arcata -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pizza-red transition">
+                    <h3 class="font-heading text-2xl font-bold mb-4 text-pizza-gold">Arcata</h3>
+                    <div class="space-y-4 text-sm text-gray-300">
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white">665 Samoa Blvd</p>
+                                <p>Arcata, CA 95521</p>
+                                <p class="text-xs italic mt-1 text-gray-400">On the corner of South G St.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="phone" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <p class="font-bold text-white">707-822-6199</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="clock" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <div>
+                                <p><span class="text-gray-400 w-20 inline-block">Mon - Thu:</span> 11:30 am - 8:00 pm</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Fri - Sat:</span> 11:30 am - 9:00 pm</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Sunday:</span> 12:00 pm - 8:00 pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eureka -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pizza-red transition">
+                    <h3 class="font-heading text-2xl font-bold mb-4 text-pizza-gold">Eureka</h3>
+                    <div class="space-y-4 text-sm text-gray-300">
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white">604 F St</p>
+                                <p>Eureka, CA 95501</p>
+                                <p class="text-xs italic mt-1 text-gray-400">On the corner of 6th St.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="phone" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <p class="font-bold text-white">707-442-5800</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="clock" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <div>
+                                <p><span class="text-gray-400 w-20 inline-block">Mon - Thu:</span> 11:30 am - 8:00 pm</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Fri - Sat:</span> 11:30 am - 9:00 pm</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Sunday:</span> 12:00 pm - 8:00 pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fortuna -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pizza-red transition">
+                    <h3 class="font-heading text-2xl font-bold mb-4 text-pizza-gold">Fortuna</h3>
+                    <div class="space-y-4 text-sm text-gray-300">
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-white">101 12th Street</p>
+                                <p>Fortuna, CA 95540</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="phone" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <p class="font-bold text-white">707-725-1123</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="clock" class="mr-3 text-pizza-red flex-shrink-0"></i>
+                            <div>
+                                <p><span class="text-gray-400 w-20 inline-block text-red-400">Monday:</span> Closed</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Tue - Thu:</span> 11:30 am - 8:00 pm</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Fri - Sat:</span> 11:30 am - 9:00 pm</p>
+                                <p><span class="text-gray-400 w-20 inline-block">Sunday:</span> 12:00 pm - 8:00 pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-off-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-5xl font-bold text-pizza-red uppercase">Our Menu</h2>
+                <p class="text-gray-500 mt-2">Delicious, fresh, and made to order.</p>
+            </div>
+
+            <!-- 1. Traditional Pizza -->
+            <div id="pauls-live-from-new-york-pizza" class="mb-16">
+                <div class="border-b-4 border-pizza-red pb-2 mb-8 flex items-end justify-between flex-wrap">
+                    <h3 class="font-heading text-3xl font-bold text-pizza-dark">Traditional Cheese Pizza</h3>
+                    <span class="text-sm text-gray-500 italic">Build your own masterpiece</span>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- Standard Sizes -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-heading text-xl font-bold mb-4 text-pizza-red">Classic Sizes</h4>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between border-b border-dashed pb-2">
+                                <span>14" Traditional Cheese</span>
+                                <span class="font-bold">19.99</span>
+                            </li>
+                            <li class="flex justify-between border-b border-dashed pb-2">
+                                <span>18" Traditional Cheese</span>
+                                <span class="font-bold">29.99</span>
+                            </li>
+                            <li class="flex justify-between border-b border-dashed pb-2">
+                                <span>XL Traditional Cheese</span>
+                                <span class="font-bold">38.99</span>
+                            </li>
+                            <li class="flex justify-between pt-2">
+                                <span>Paul's Sicilian Crust</span>
+                                <span class="font-bold">34.99</span>
+                            </li>
+                            <li class="text-xs text-gray-500 mt-1">*Add $5 to your favorite 18" specialty pizza price for Sicilian</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Special Crusts -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-heading text-xl font-bold mb-4 text-pizza-red">Specialty Crusts</h4>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-2 mb-4 text-sm text-yellow-800">
+                            <strong>Note:</strong> For Dine-In Orders Only!!
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between border-b border-dashed pb-2">
+                                <span>10" Gluten-Free Cauliflower</span>
+                                <span class="font-bold">12.49</span>
+                            </li>
+                            <li class="flex justify-between border-b border-dashed pb-2">
+                                <span>12" Gluten-Free Crust</span>
+                                <span class="font-bold">13.49</span>
+                            </li>
+                            <li class="flex justify-between pt-2">
+                                <span>California Crust (12")</span>
+                                <span class="font-bold">17.99</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Toppings -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h4 class="font-heading text-xl font-bold mb-4 text-center">Toppings & Prices</h4>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="font-bold text-gray-700 mb-2">Topping Pricing</h5>
+                            <ul class="text-sm space-y-1 text-gray-600">
+                                <li class="flex justify-between"><span>10"</span> <span>$1.00 - $2.50</span></li>
+                                <li class="flex justify-between"><span>12" & CA</span> <span>$1.50 - $3.50</span></li>
+                                <li class="flex justify-between"><span>14"</span> <span>$2.00 - $4.00</span></li>
+                                <li class="flex justify-between"><span>18"</span> <span>$3.00 - $5.00</span></li>
+                                <li class="flex justify-between"><span>XL</span> <span>$3.50 - $5.50</span></li>
+                                <li class="flex justify-between"><span>Sicilian</span> <span>$3.00 - $5.00</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-gray-700 mb-2">Available Toppings</h5>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Pepperoni, Italian Sausage, Garlic, Roasted Garlic, Tomato, Pesto, Black Olive, Ham, Pineapple, Salami, Mushroom, Broccoli, Bacon, Provolone, Meatball, Yellow Onion, Red Onion, Sauteed Spinach, Fresh Spinach, Jalapeno, Sun-Dried Tomato, Artichoke Hearts, Basil, Pepperoncini, Garlic Butter, Red Bell Peppers, Green Bell Peppers, Extra-Mozzarella, Cheddar, Bleu Cheese Crumble, Feta, Ricotta, Chicken, Anchovy, Pulled Pork, & Seasonal Items.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Double Crusted -->
+            <div id="pauls-double-crusted-specialty-pizzas" class="mb-16">
+                <div class="border-b-4 border-pizza-red pb-2 mb-8">
+                    <h3 class="font-heading text-3xl font-bold text-pizza-dark">Double Crusted Specialty Pizzas</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Item -->
+                    <div class="menu-card bg-white p-6 rounded shadow transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-xl text-pizza-red">The Brooklyn</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Double crusted pie filled with sautéed spinach, garlic, ricotta & mozzarella.</p>
+                        <div class="text-sm font-medium bg-gray-100 p-2 rounded text-center">
+                            14": $23.99 | 18": $38.99 | XL: $49.99
+                        </div>
+                    </div>
+                    <!-- Item -->
+                    <div class="menu-card bg-white p-6 rounded shadow transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-xl text-pizza-red">The Hitman</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Double crusted with sauce, pepperoni, salami, bacon, sausage & mozzarella.</p>
+                        <div class="text-sm font-medium bg-gray-100 p-2 rounded text-center">
+                            14": $23.99 | 18": $38.99 | XL: $49.99
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Specialty Pizzas -->
+            <div id="pauls-specialty-pizzas" class="mb-16">
+                <div class="border-b-4 border-pizza-red pb-2 mb-8">
+                    <h3 class="font-heading text-3xl font-bold text-pizza-dark">Paul's Specialty Pizzas</h3>
+                    <p class="text-sm text-gray-500 mt-1">Sizes: 10" GF | 12" GF | 14" | 18" | XL</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Template for Specialty Pizza Item -->
+                    <script>
+                        const specialtyPizzas = [
+                            {name: "The Sunset", desc: "Traditional pizza with sun-dried tomato, pineapple & basil", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "Margherita", desc: "Mozzarella base with fresh & roasted garlic, seasoned mozzarella, pizza sauce & basil", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The Vegetarian", desc: "Traditional pizza with tomato, yellow onion, garlic & broccoli", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "Olive Special", desc: "Traditional pizza with artichoke, black olives, garlic & basil", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The Joe Namath", desc: "A pesto base, with mozzarella, tomato, garlic, & basil", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "La Bruschetta", desc: "Tomato & garlic base, sharp provolone, mozzarella, sun-dried tomato pesto & basil", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "Garden of Eden", desc: "Fresh spinach, fresh tomato, mozzarella, pizza sauce, ricotta dollops & topped with feta", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "The Godfather", desc: "Ricotta base with a hint of garlic, mozzarella, fresh tomato, sun-dried tomatoes & pesto", prices: "10\" GF 15.49 | 12\" GF 16.99 | 14\" 23.99 | 18\" 38.99 | XL 49.99"},
+                            {name: "The Greek", desc: "Pesto & fresh spinach base, mozzarella, olives, sun-dried tomato, red onions and feta", prices: "10\" GF 15.49 | 12\" GF 16.99 | 14\" 23.99 | 18\" 38.99 | XL 49.99"},
+                            {name: "Rumble in D’bronx", desc: "Traditional cheese pizza with pineapple, bacon & jalapeno", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "Buffalo Chicken", desc: "Ranch sauce base, red onion, seasoned chicken, mozzarella, & buffalo sauce!!", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "New Amsterdam", desc: "Traditional pizza with mushroom, sausage, yellow onions, & pepperoni", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The BBQ Pizza", desc: "Traditional cheese pizza with chicken, bacon & red onion, then BBQ sauce on top", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "Off-Broadway", desc: "Traditional pizza with mushroom, sausage, green bell pepper & yellow onion", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The ’Roni Special", desc: "Traditional cheese pizza with pepperoni, basil, tomato & garlic", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The Wise Guy", desc: "Traditional pizza with sausage, green peppers, yellow onions & garlic", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The Hawaii 5-0", desc: "A traditional ham and pineapple pizza with bacon & BBQ sauce added", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "The B.L.T", desc: "A ranch based pizza with fresh spinach, bacon, tomato & mozzarella", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "4 Meat Special", desc: "Traditional pizza with pepperoni, sausage, salami & bacon", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "Tony Soprano", desc: "Traditional pizza with mushroom, sausage, red onion & ricotta", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "The Guido", desc: "Traditional pizza with sausage, green peppers, red peppers, red onion & pepperoncini", prices: "10\" GF 13.49 | 12\" GF 14.99 | 14\" 21.99 | 18\" 36.99 | XL 47.99"},
+                            {name: "Chicken Club", desc: "A ranch sauce base, mozzarella, tomato, red onion, chicken & bacon", prices: "10\" GF 14.99 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "Florentine", desc: "Fresh spinach, chicken, roasted garlic, provolone, & garlic butter under mozzarella", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "Pesto Paradise", desc: "A pesto based pizza with fresh spinach, mushroom, bacon, red onion & mozzarella", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "Manhattan", desc: "Pesto base pizza with fresh tomatoes, sundried tomatoes, artichoke hearts & chicken topped with mozzarella", prices: "10\" GF 14.49 | 12\" GF 15.99 | 14\" 22.99 | 18\" 37.99 | XL 48.99"},
+                            {name: "New York Combo", desc: "Traditional pizza with pepperoni, mushroom, sausage, salami, green bell pepper, black olives & yellow onion", prices: "10\" GF 15.49 | 12\" GF 16.99 | 14\" 23.99 | 18\" 38.99 | XL 49.99"}
+                        ];
+
+                        document.write(specialtyPizzas.map(pizza => `
+                            <div class="bg-white p-5 rounded border border-gray-100 shadow-sm hover:shadow-md transition h-full flex flex-col">
+                                <h4 class="font-bold text-lg text-pizza-red mb-2">${pizza.name}</h4>
+                                <p class="text-sm text-gray-600 mb-4 flex-grow">${pizza.desc}</p>
+                                <div class="text-xs font-mono text-gray-500 bg-gray-50 p-2 rounded">
+                                    ${pizza.prices}
+                                </div>
+                            </div>
+                        `).join(''));
+                    </script>
+                </div>
+            </div>
+
+            <!-- Two Column Section: Rolls/Calzones & Salads -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                
+                <!-- Pizza Rolls & Calzones -->
+                <div>
+                    <div id="pizza-rolls" class="mb-10">
+                        <h3 class="font-heading text-2xl font-bold text-pizza-dark border-b-2 border-pizza-red pb-2 mb-4">Pizza Rolls</h3>
+                        <p class="text-xs text-gray-500 mb-4">*Additional items $1 - $2</p>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold">Sausage Roll</h4>
+                                    <p class="text-sm text-gray-600">Italian sausage, green bell pepper, yellow onion, red sauce & mozzarella wrapped in dough.</p>
+                                </div>
+                                <span class="font-bold text-pizza-red">$12.49</span>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold">Veggie Roll</h4>
+                                    <p class="text-sm text-gray-600">Mushroom, green bell pepper, black olives, yellow onion, red sauce & mozzarella wrapped in dough.</p>
+                                </div>
+                                <span class="font-bold text-pizza-red">$12.49</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="calzones">
+                        <h3 class="font-heading text-2xl font-bold text-pizza-dark border-b-2 border-pizza-red pb-2 mb-4">Calzones</h3>
+                        <p class="text-sm text-gray-600 mb-2">A pocket of dough stuffed generously with ricotta and mozzarella cheese. Marinara on the side!</p>
+                        <div class="space-y-2 mt-4">
+                            <div class="flex justify-between">
+                                <span class="font-bold">Mini-Vinnie Calzone</span>
+                                <span>$10.49</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-bold">Large Calzone</span>
+                                <span>$18.49</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salads -->
+                <div id="salads">
+                    <h3 class="font-heading text-2xl font-bold text-pizza-dark border-b-2 border-pizza-red pb-2 mb-4">Salads</h3>
+                    <p class="text-xs text-gray-500 mb-4">Served with a dinner bread</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-2">
+                            <div>
+                                <h4 class="font-bold">Dinner Salad</h4>
+                                <p class="text-sm text-gray-600">Spring mix, red onion, grape tomato, romano & croutons</p>
+                            </div>
+                            <div class="text-right text-sm">
+                                <div class="font-bold">Sm $7.99</div>
+                                <div class="font-bold">Lg $9.49</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-2">
+                            <div>
+                                <h4 class="font-bold">Garden Salad</h4>
+                                <p class="text-sm text-gray-600">Spring mix, artichoke, black olives, mushroom, provolone, jalapeños, tomato & romano</p>
+                            </div>
+                            <span class="font-bold text-pizza-red">$14.49</span>
+                        </div>
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-2">
+                            <div>
+                                <h4 class="font-bold">Antipasto Salad</h4>
+                                <p class="text-sm text-gray-600">Spring mix, artichoke, olives, mushroom, provolone, salami, pepperoni, sun-dried tomato & romano</p>
+                            </div>
+                            <span class="font-bold text-pizza-red">$16.99</span>
+                        </div>
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-2">
+                            <div>
+                                <h4 class="font-bold">Caesar Salad</h4>
+                                <p class="text-sm text-gray-600">Romaine, caesar dressing, tomato, provolone, croutons & romano</p>
+                                <p class="text-xs text-pizza-red mt-1">+ Bacon $2.99 | + Chicken $3.99 | + Breaded Chicken $5.49</p>
+                            </div>
+                            <span class="font-bold text-pizza-red">$13.99</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold">Buffalo Salad</h4>
+                                <p class="text-sm text-gray-600">Spring mix, bleu cheese, red onion, four buffalo chicken tenders</p>
+                            </div>
+                            <span class="font-bold text-pizza-red">$16.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entrees & Hot Sandwiches -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                 <!-- Entrees -->
+                 <div id="entrees-pasta">
+                    <h3 class="font-heading text-2xl font-bold text-pizza-dark border-b-2 border-pizza-red pb-2 mb-4">Entrees & Pasta</h3>
+                    <p class="text-xs text-gray-500 mb-4">Includes Small Dinner Salad, Garlic Bread, or Dinner Breads</p>
+                    
+                    <div class="space-y-4">
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Beef Lasagna</span>
+                                <span>$18.99</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Seasoned beef, ricotta, marinara, mozzarella, parsley & romano.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Spinach Lasagna</span>
+                                <span>$18.49</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Sautéed spinach, ricotta, marinara, mozzarella.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Chicken Parmigiana</span>
+                                <span>$18.49</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Breaded chicken breast, marinara, mozzarella on spaghetti.</p>
+                        </div>
+                         <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Eggplant Parmigiana (Seasonal)</span>
+                                <span>$18.49</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Breaded eggplant, marinara, mozzarella on spaghetti.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Baked Ziti</span>
+                                <span>$17.49</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Creamy marinara, mozzarella, parsley & romano.</p>
+                            <p class="text-xs text-pizza-red">+2 Meatballs $4 | +3 Meatballs $5</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Deep-Fried Ravioli</span>
+                                <span>$17.49</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Eight cheese ravioli in marinara.</p>
+                        </div>
+                         <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Spaghetti Marinara</span>
+                                <span>$15.49</span>
+                            </div>
+                            <p class="text-xs text-pizza-red">+2 Meatballs $4 | +3 Meatballs $5</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hot Sandwiches -->
+                <div id="hot-sandwiches">
+                    <h3 class="font-heading text-2xl font-bold text-pizza-dark border-b-2 border-pizza-red pb-2 mb-4">Hot Sandwiches</h3>
+                    <p class="text-xs text-gray-500 mb-4">Served with French fries. Sub salad available with upcharge.</p>
+                    
+                    <div class="space-y-5">
+                         <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Meatball Hero</span>
+                                <span>$15.99</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Homemade meatballs, marinara, mozzarella, parsley & romano.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Chicken Parmigiana Hero</span>
+                                <span>$15.99</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Breaded chicken breast, marinara, mozzarella.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Italian Sausage, Pepper & Onion Hero</span>
+                                <span>$15.99</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Sausage, bell peppers, onions, marinara, mozzarella.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="flex justify-between font-bold text-gray-800">
+                                <span>Chicken Dijon Hero</span>
+                                <span>$13.99</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Breaded chicken breast, mozzarella, tomato, onion, dijon ranch.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Garlic Bread Section Tucked Here -->
+                    <div id="garlic-bread-garlic-knots" class="mt-8 pt-8 border-t border-gray-200">
+                        <h4 class="font-heading text-xl font-bold text-pizza-dark mb-4">Breads</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between"><span>Garlic Bread (2)</span> <b>$4.99</b></li>
+                            <li class="text-xs text-right text-gray-500">+ Cheese $0.50</li>
+                            <li class="flex justify-between"><span>Dinner Breads (3)</span> <b>$2.22</b></li>
+                            <li class="flex justify-between"><span>Garlic Knots (7)</span> <b>$5.99</b></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appetizers, Wings, Sides, Dessert Grid -->
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <!-- Appz -->
+                <div id="appetizers" class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="font-heading text-lg font-bold text-pizza-red mb-3">Appetizers</h4>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <div class="flex justify-between font-bold"><span>Mussels Marinara</span> <span>$14.49</span></div>
+                            <p class="text-xs text-gray-500">Hot & Spicy or Mild</p>
+                        </div>
+                        <div class="flex justify-between font-bold"><span>Deep Fried Ravioli (8)</span> <span>$8.99</span></div>
+                        <div class="flex justify-between font-bold"><span>French Fries</span> <span>$5.99</span></div>
+                        <div class="flex justify-between font-bold"><span>Sautéed Broccoli</span> <span>$6.99</span></div>
+                    </div>
+                </div>
+
+                <!-- Wings -->
+                <div id="wings-tenders" class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="font-heading text-lg font-bold text-pizza-red mb-3">Wings & Tenders</h4>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <div class="flex justify-between font-bold"><span>Chicken Wings (12)</span> <span>$14.99</span></div>
+                            <p class="text-xs text-gray-500">Buffalo, BBQ, Thai, or Plain</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between font-bold"><span>Chicken Tenders (4)</span> <span>$8.99</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- On The Side -->
+                <div id="on-the-side" class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="font-heading text-lg font-bold text-pizza-red mb-3">On The Side</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <h5 class="font-bold text-sm">3 Meatballs in Marinara</h5>
+                            <p class="text-xs text-gray-500">With romano & parsley</p>
+                            <div class="font-bold text-sm">$8.88</div>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm">Pizza Sauce or Homemade Marinara</h5>
+                            <p class="text-xs text-gray-500">Both available in two sizes</p>
+                            <div class="text-xs italic">Price varies</div>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm">Salad Dressing (2oz.)</h5>
+                            <p class="text-xs text-gray-500">Any of 5 varieties</p>
+                            <div class="font-bold text-sm">$0.66</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert -->
+                <div id="dessert" class="bg-white p-4 rounded shadow-sm">
+                    <h4 class="font-heading text-lg font-bold text-pizza-red mb-3">Dessert</h4>
+                    <div>
+                        <h5 class="font-bold text-sm">Famous New York Cannoli</h5>
+                        <p class="text-xs text-gray-500">Pastry shell stuffed with sweet ricotta & chocolate chips</p>
+                        <div class="font-bold text-sm mt-1">$7.99</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reservation & Contact Section -->
+    <section id="contact-reservations" class="py-16 bg-white text-gray-800 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="font-heading text-4xl font-bold mb-6 text-pizza-red">Get in Touch</h2>
+                    <p class="mb-8 text-gray-600">Have a question or want to book a large party? Drop us a line.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="mr-4 text-pizza-red"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Check Our Locations Above</h4>
+                                <p class="text-gray-500">We have stores in Eureka, Arcata, and Fortuna.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="clock" class="mr-4 text-pizza-red"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Hours</h4>
+                                <p class="text-gray-500">Varies by location. See the locations section for details.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reservation Form -->
+                <div class="bg-gray-50 text-gray-800 p-8 rounded-lg shadow-lg border border-gray-200">
+                    <h3 class="font-heading text-3xl font-bold mb-2">Reservations & Contact</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Book a table or send us a message.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your request has been simulated.');" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold mb-1">Name</label>
+                                <input type="text" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-pizza-red" placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1">Phone</label>
+                                <input type="tel" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-pizza-red" placeholder="(555) 123-4567" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-1">Email</label>
+                            <input type="email" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-pizza-red" placeholder="you@example.com" required>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold mb-1">Date</label>
+                                <input type="date" class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-pizza-red">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1">Guests</label>
+                                <select class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-pizza-red">
+                                    <option>2 People</option>
+                                    <option>3 People</option>
+                                    <option>4 People</option>
+                                    <option>5+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-1">Message (Optional)</label>
+                            <textarea class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-pizza-red" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-pizza-red text-white font-bold py-3 rounded hover:bg-red-700 transition uppercase tracking-wider">
+                            Send Request
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <h4 class="font-heading font-bold text-xl">Paul's Live From NY Pizza</h4>
+                <p class="text-sm text-gray-500">© 2025 All Rights Reserved.</p>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script & Icons -->
+    <script>
+        lucide.createIcons();
+        
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
