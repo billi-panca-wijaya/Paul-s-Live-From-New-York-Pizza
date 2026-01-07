@@ -1,0 +1,130 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  backgroundImage: string;
+  showCtas?: boolean;
+}
+
+const { title, subtitle, backgroundImage, showCtas = true } = Astro.props;
+---
+
+<header
+  class="hero"
+  style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${backgroundImage}');`}
+>
+  <div class="hero-content">
+    <h1 class="hero-title">{title}</h1>
+    <p class="hero-subtitle">{subtitle}</p>
+    {
+      showCtas && (
+        <div class="hero-ctas">
+          <a href="/menu" class="btn btn-secondary">
+            View Menu
+          </a>
+          <a
+            href="https://paulslivefromnewyorkpizza.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            Order Delivery
+          </a>
+        </div>
+      )
+    }
+  </div>
+</header>
+
+<style>
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 2rem 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content {
+      animation: none;
+    }
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 0.875rem 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-pizza-red);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: white;
+    color: var(--color-pizza-dark);
+  }
+
+  .btn-secondary:hover {
+    background-color: #e5e5e5;
+    transform: translateY(-2px);
+  }
+</style>

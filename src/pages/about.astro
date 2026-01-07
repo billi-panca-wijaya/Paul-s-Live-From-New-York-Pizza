@@ -1,0 +1,229 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.astro";
+
+const title = "About Us | Paul's Live From New York Pizza";
+const description =
+  "Learn about our authentic New York pizza tradition. Hand-tossed dough and secret family recipes. Serving Humboldt County.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation client:load />
+
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="container">
+        <h1 class="hero-title">Our Story</h1>
+        <p class="hero-subtitle">
+          Bringing authentic New York flavor to Humboldt County
+        </p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="container">
+        <div class="story-content">
+          <svg
+            class="story-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"
+            ></path>
+            <line x1="6" y1="17" x2="18" y2="17"></line>
+          </svg>
+          <h2>Welcome to Paul's</h2>
+          <p>
+            We bring the authentic taste of New York City straight to your
+            table. From our hand-tossed dough to our secret family sauce
+            recipes, every slice is a tribute to tradition.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="values-section">
+      <div class="container">
+        <h2 class="section-title">What Makes Us Different</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Fresh Daily</h3>
+            <p>
+              Our dough is made fresh every single day. No shortcuts, no frozen
+              ingredients.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Family Recipes</h3>
+            <p>Secret sauce recipes passed down through generations.</p>
+          </div>
+          <div class="value-card">
+            <h3>Community First</h3>
+            <p>
+              Three locations across Humboldt County. Proud to serve our local
+              community.
+            </p>
+          </div>
+          <div class="value-card">
+            <h3>Quality Guaranteed</h3>
+            <p>
+              Premium mozzarella and hand-selected toppings. Never compromise on
+              quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Taste the Difference?</h2>
+        <div class="cta-buttons">
+          <a href="/menu" class="btn">View Our Menu</a>
+          <a
+            href="https://paulslivefromnewyorkpizza.com/"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-alt">Order Now</a
+          >
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-page {
+    background-color: var(--color-off-white);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .about-hero {
+    background: var(--color-pizza-dark);
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-gray-400);
+  }
+  .story-section {
+    padding: 5rem 0;
+    background: white;
+  }
+  .story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .story-icon {
+    color: var(--color-pizza-red);
+    margin-bottom: 1.5rem;
+  }
+  .story-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-pizza-dark);
+    margin-bottom: 1.5rem;
+  }
+  .story-content p {
+    font-size: 1.25rem;
+    color: var(--color-gray-600);
+    line-height: 1.8;
+  }
+  .values-section {
+    padding: 5rem 0;
+  }
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-pizza-red);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+  }
+  .value-card:hover {
+    transform: translateY(-4px);
+  }
+  .value-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-pizza-dark);
+    margin-bottom: 0.75rem;
+  }
+  .value-card p {
+    font-size: 0.9375rem;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+  .cta-section {
+    padding: 5rem 0;
+    background: var(--color-pizza-red);
+    color: white;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: white;
+    color: var(--color-pizza-red);
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn-alt {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+</style>

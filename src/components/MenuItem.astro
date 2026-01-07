@@ -1,0 +1,73 @@
+---
+interface Props {
+  name: string;
+  description?: string;
+  price?: string;
+  prices?: string;
+  note?: string;
+}
+
+const { name, description, price, prices, note } = Astro.props;
+---
+
+<div class="menu-item">
+  <div class="item-header">
+    <h4 class="item-name">{name}</h4>
+    {price && <span class="item-price">{price}</span>}
+  </div>
+  {description && <p class="item-description">{description}</p>}
+  {prices && <div class="item-prices">{prices}</div>}
+  {note && <p class="item-note">{note}</p>}
+</div>
+
+<style>
+  .menu-item {
+    padding: 1rem 0;
+    border-bottom: 1px dashed var(--color-gray-200);
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .item-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-pizza-red);
+  }
+
+  .item-price {
+    font-weight: 700;
+    color: var(--color-pizza-dark);
+    white-space: nowrap;
+  }
+
+  .item-description {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    margin-bottom: 0.5rem;
+  }
+
+  .item-prices {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--color-gray-500);
+    background-color: var(--color-gray-100);
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .item-note {
+    font-size: 0.75rem;
+    color: var(--color-pizza-red);
+    margin-top: 0.25rem;
+  }
+</style>

@@ -1,0 +1,180 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.svelte";
+
+const title = "Contact & Reservations | Paul's Live From New York Pizza";
+const description =
+  "Reserve a table or contact us with questions. Serving Humboldt County with authentic NY-style pizza at Arcata, Eureka, and Fortuna locations.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation client:load />
+
+  <main class="contact-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">Contact & Reservations</h1>
+        <p class="page-subtitle">
+          Have a question or want to book a table? We'd love to hear from you.
+        </p>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p class="info-intro">
+            Have a question or want to book a large party? Drop us a line.
+          </p>
+
+          <div class="info-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <div>
+              <h3>Check Our Locations</h3>
+              <p>We have stores in Eureka, Arcata, and Fortuna.</p>
+              <a href="/locations" class="info-link">View Locations →</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <div>
+              <h3>Hours</h3>
+              <p>Varies by location. See the locations page for details.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
+            </svg>
+            <div>
+              <h3>Call Us</h3>
+              <p>Arcata: <a href="tel:7078226199">707-822-6199</a></p>
+              <p>Eureka: <a href="tel:7074425800">707-442-5800</a></p>
+              <p>Fortuna: <a href="tel:7077251123">707-725-1123</a></p>
+            </div>
+          </div>
+        </div>
+
+        <ContactForm client:visible />
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contact-page {
+    padding: 3rem 0;
+    background: white;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .page-subtitle {
+    color: var(--color-gray-500);
+    font-size: 1.125rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .contact-info h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-pizza-red);
+    margin-bottom: 0.5rem;
+  }
+  .info-intro {
+    color: var(--color-gray-600);
+    margin-bottom: 2rem;
+  }
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .info-item svg {
+    color: var(--color-pizza-red);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .info-item h3 {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-pizza-dark);
+    margin-bottom: 0.25rem;
+  }
+  .info-item p {
+    color: var(--color-gray-500);
+    font-size: 0.9375rem;
+  }
+  .info-item a {
+    color: var(--color-pizza-red);
+    transition: opacity 0.15s;
+  }
+  .info-item a:hover {
+    opacity: 0.8;
+  }
+  .info-link {
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paulslivefromnewyorkpizza.com/sitemap-index.xml

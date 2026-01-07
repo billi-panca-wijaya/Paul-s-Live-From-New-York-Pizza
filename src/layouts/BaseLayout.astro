@@ -1,0 +1,90 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+import "../styles/global.css";
+
+const { title, description, canonical } = Astro.props;
+const canonicalURL =
+  canonical || new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Load fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Paul's Live From New York Pizza" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Paul's Live From New York Pizza",
+        "image": "https://cloudassetskita.com/uploads/23709lfny-statue-color-on-black-2648fc67.png",
+        "servesCuisine": "Pizza, Italian",
+        "priceRange": "$$",
+        "address": [
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "665 Samoa Blvd",
+            "addressLocality": "Arcata",
+            "addressRegion": "CA",
+            "postalCode": "95521"
+          },
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "604 F St",
+            "addressLocality": "Eureka",
+            "addressRegion": "CA",
+            "postalCode": "95501"
+          },
+          {
+            "@type": "PostalAddress",
+            "streetAddress": "101 12th Street",
+            "addressLocality": "Fortuna",
+            "addressRegion": "CA",
+            "postalCode": "95540"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

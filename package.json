@@ -1,0 +1,17 @@
+{
+  "name": "pauls-pizza",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.0.0",
+    "@astrojs/svelte": "^5.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "svelte": "^4.0.0"
+  }
+}

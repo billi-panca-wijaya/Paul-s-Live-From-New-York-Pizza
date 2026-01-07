@@ -1,0 +1,355 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.svelte";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
+
+const title =
+  "Paul's Live From New York Pizza | Authentic NY Style Pizza Delivery";
+const description =
+  "Authentic New York-style pizza in Humboldt County. Hand-tossed dough, family recipes. Order delivery or visit us in Arcata, Eureka, or Fortuna, CA.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation client:load />
+
+  <!-- Preload hero image for LCP -->
+  <link
+    rel="preload"
+    as="image"
+    href="https://cloudassetskita.com/uploads/livefromnewyorkpizzaheader-90a5ccac.jpg"
+    slot="head"
+  />
+
+  <Hero
+    title="Authentic NY Style Pizza"
+    subtitle="Real Deals & Real Delivery. Taste the Big Apple in every bite."
+    backgroundImage="https://cloudassetskita.com/uploads/livefromnewyorkpizzaheader-90a5ccac.jpg"
+  />
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"
+          ></path>
+          <line x1="6" y1="17" x2="18" y2="17"></line>
+        </svg>
+      </div>
+      <h2 class="about-title">Welcome to Paul's</h2>
+      <p class="about-text">
+        We bring the authentic taste of New York City straight to your table.
+        From our hand-tossed dough to our secret family sauce recipes, every
+        slice is a tribute to tradition. Whether you're craving a classic cheese
+        slice or a fully loaded specialty pie, Paul's Live From New York Pizza
+        delivers quality you can taste.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Menu Section -->
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Featured Favorites</h2>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <h3 class="featured-name">The Godfather</h3>
+          <p class="featured-desc">
+            Ricotta base with a hint of garlic, mozzarella, fresh tomato,
+            sun-dried tomatoes & pesto
+          </p>
+          <a href="/menu" class="featured-link">View Full Menu →</a>
+        </div>
+        <div class="featured-card">
+          <h3 class="featured-name">New York Combo</h3>
+          <p class="featured-desc">
+            Traditional pizza with pepperoni, mushroom, sausage, salami, green
+            bell pepper, black olives & yellow onion
+          </p>
+          <a href="/menu" class="featured-link">View Full Menu →</a>
+        </div>
+        <div class="featured-card">
+          <h3 class="featured-name">The Brooklyn</h3>
+          <p class="featured-desc">
+            Double crusted pie filled with sautéed spinach, garlic, ricotta &
+            mozzarella
+          </p>
+          <a href="/menu" class="featured-link">View Full Menu →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Locations Preview -->
+  <section class="locations-preview">
+    <div class="container">
+      <h2 class="section-title">Find Us</h2>
+      <p class="locations-subtitle">
+        Three convenient locations across Humboldt County
+      </p>
+      <div class="locations-grid">
+        <div class="location-preview">
+          <h3>Arcata</h3>
+          <p>665 Samoa Blvd</p>
+          <p>707-822-6199</p>
+        </div>
+        <div class="location-preview">
+          <h3>Eureka</h3>
+          <p>604 F St</p>
+          <p>707-442-5800</p>
+        </div>
+        <div class="location-preview">
+          <h3>Fortuna</h3>
+          <p>101 12th Street</p>
+          <p>707-725-1123</p>
+        </div>
+      </div>
+      <a href="/locations" class="btn btn-primary">View All Locations & Hours</a
+      >
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Hungry? Order Now!</h2>
+      <p class="cta-text">
+        Skip the wait and get your favorite pizza delivered hot to your door.
+      </p>
+      <div class="cta-buttons">
+        <a
+          href="https://paulslivefromnewyorkpizza.com/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary">Order Online</a
+        >
+        <a href="/contact" class="btn btn-secondary-dark">Make a Reservation</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-section {
+    padding: 4rem 0;
+    background-color: white;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .about-icon {
+    color: var(--color-pizza-red);
+    margin-bottom: 1rem;
+  }
+
+  .about-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-pizza-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    color: var(--color-gray-600);
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .featured-section {
+    padding: 4rem 0;
+    background-color: var(--color-off-white);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .featured-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .featured-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-desc {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .featured-link {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-pizza-dark);
+    transition: color 0.15s ease;
+  }
+
+  .featured-link:hover {
+    color: var(--color-pizza-red);
+  }
+
+  .locations-preview {
+    padding: 4rem 0;
+    background-color: var(--color-pizza-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .locations-preview .section-title {
+    color: white;
+  }
+
+  .locations-subtitle {
+    color: var(--color-gray-400);
+    margin-bottom: 2rem;
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .location-preview {
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .location-preview h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-pizza-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .location-preview p {
+    font-size: 0.875rem;
+    color: var(--color-gray-300);
+  }
+
+  .cta-section {
+    padding: 4rem 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-pizza-red) 0%,
+      #b71c1c 100%
+    );
+    color: white;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-text {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-pizza-red);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #b71c1c;
+  }
+
+  .locations-preview .btn-primary {
+    background-color: white;
+    color: var(--color-pizza-dark);
+  }
+
+  .locations-preview .btn-primary:hover {
+    background-color: var(--color-gray-200);
+  }
+
+  .btn-secondary-dark {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-secondary-dark:hover {
+    background-color: white;
+    color: var(--color-pizza-red);
+  }
+</style>

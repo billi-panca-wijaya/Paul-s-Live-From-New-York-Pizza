@@ -1,0 +1,201 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.astro";
+
+const title = "404 - Page Not Found | Paul's Live From New York Pizza";
+const description =
+  "Oops! This page doesn't exist. Head back home or check out our menu.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation client:load />
+
+  <main class="error-page">
+    <div class="error-content">
+      <div class="pizza-icon">🍕</div>
+      <h1 class="error-title">404</h1>
+      <h2 class="error-subtitle">Slice Not Found!</h2>
+      <p class="error-text">
+        Looks like this page got delivered to the wrong address.
+      </p>
+      <div class="error-buttons">
+        <a href="/" class="btn btn-primary">Go Home</a>
+        <a href="/menu" class="btn btn-secondary">View Menu</a>
+      </div>
+    </div>
+
+    <div class="floating-items">
+      <span class="float-item" style="--delay: 0s; --x: 10%;">🍕</span>
+      <span class="float-item" style="--delay: 1s; --x: 25%;">🧀</span>
+      <span class="float-item" style="--delay: 2s; --x: 40%;">🍅</span>
+      <span class="float-item" style="--delay: 0.5s; --x: 60%;">🌿</span>
+      <span class="float-item" style="--delay: 1.5s; --x: 75%;">🍕</span>
+      <span class="float-item" style="--delay: 2.5s; --x: 90%;">🧄</span>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .error-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      var(--color-pizza-dark) 0%,
+      #0f0f0f 100%
+    );
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .error-content {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .pizza-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .error-title {
+    font-family: var(--font-heading);
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .error-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .error-text {
+    font-size: 1.125rem;
+    color: var(--color-gray-400);
+    margin-bottom: 2rem;
+  }
+
+  .error-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-pizza-red);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid var(--color-gray-600);
+  }
+
+  .btn-secondary:hover {
+    border-color: white;
+    transform: translateY(-2px);
+  }
+
+  .floating-items {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .float-item {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.15;
+    left: var(--x);
+    animation: floatUp 8s infinite;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes floatUp {
+    0% {
+      bottom: -50px;
+      opacity: 0;
+      transform: rotate(0deg);
+    }
+    10% {
+      opacity: 0.15;
+    }
+    90% {
+      opacity: 0.15;
+    }
+    100% {
+      bottom: 110%;
+      opacity: 0;
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pizza-icon,
+    .float-item,
+    .error-content {
+      animation: none;
+    }
+    .float-item {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,212 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.astro";
+import LocationCard from "../components/LocationCard.astro";
+import LazyMap from "../components/LazyMap.svelte";
+
+const title = "Locations | Paul's Live From New York Pizza";
+const description =
+  "Find your nearest Paul's Pizza location in Arcata, Eureka, or Fortuna, CA. View hours, addresses, phone numbers, and directions to all three stores.";
+
+const locations = [
+  {
+    name: "Arcata",
+    address: "665 Samoa Blvd",
+    city: "Arcata",
+    state: "CA",
+    zip: "95521",
+    note: "On the corner of South G St.",
+    phone: "707-822-6199",
+    hours: [
+      { days: "Mon - Thu", time: "11:30 am - 8:00 pm" },
+      { days: "Fri - Sat", time: "11:30 am - 9:00 pm" },
+      { days: "Sunday", time: "12:00 pm - 8:00 pm" },
+    ],
+  },
+  {
+    name: "Eureka",
+    address: "604 F St",
+    city: "Eureka",
+    state: "CA",
+    zip: "95501",
+    note: "On the corner of 6th St.",
+    phone: "707-442-5800",
+    hours: [
+      { days: "Mon - Thu", time: "11:30 am - 8:00 pm" },
+      { days: "Fri - Sat", time: "11:30 am - 9:00 pm" },
+      { days: "Sunday", time: "12:00 pm - 8:00 pm" },
+    ],
+  },
+  {
+    name: "Fortuna",
+    address: "101 12th Street",
+    city: "Fortuna",
+    state: "CA",
+    zip: "95540",
+    phone: "707-725-1123",
+    hours: [
+      { days: "Monday", time: "Closed", closed: true },
+      { days: "Tue - Thu", time: "11:30 am - 8:00 pm" },
+      { days: "Fri - Sat", time: "11:30 am - 9:00 pm" },
+      { days: "Sunday", time: "12:00 pm - 8:00 pm" },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation client:load />
+
+  <main class="locations-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">Our Locations</h1>
+        <p class="page-subtitle">
+          Visit us at one of our three convenient locations across Humboldt
+          County.
+        </p>
+      </header>
+
+      <div class="locations-grid">
+        {
+          locations.map((location) => (
+            <div class="location-wrapper">
+              <LocationCard {...location} />
+              <LazyMap
+                client:visible
+                address={location.address}
+                city={location.city}
+                state={location.state}
+                zip={location.zip}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <section class="cta-section">
+        <h2>Ready to Order?</h2>
+        <p>
+          Skip the wait and get your favorite pizza delivered or pick it up!
+        </p>
+        <div class="cta-buttons">
+          <a
+            href="https://paulslivefromnewyorkpizza.com/"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary">Order Online</a
+          >
+          <a href="/contact" class="btn btn-secondary">Make a Reservation</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .locations-page {
+    padding: 3rem 0;
+    background-color: var(--color-pizza-dark);
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-subtitle {
+    color: var(--color-gray-400);
+    font-size: 1.125rem;
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .location-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 3rem;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-radius: 12px;
+    border: 1px solid #374151;
+  }
+
+  .cta-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-section p {
+    color: var(--color-gray-400);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-pizza-red);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #b71c1c;
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid var(--color-gray-500);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+  }
+</style>

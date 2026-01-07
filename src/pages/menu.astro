@@ -1,0 +1,693 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.astro";
+import MenuSection from "../components/MenuSection.astro";
+import MenuItem from "../components/MenuItem.astro";
+
+const title = "Menu | Paul's Live From New York Pizza";
+const description =
+  "Explore our full menu of authentic NY-style pizzas, calzones, pasta, salads, and more. Gluten-free options available. Order online or dine in.";
+
+// Menu Data
+const specialtyPizzas = [
+  {
+    name: "The Sunset",
+    desc: "Traditional pizza with sun-dried tomato, pineapple & basil",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "Margherita",
+    desc: "Mozzarella base with fresh & roasted garlic, seasoned mozzarella, pizza sauce & basil",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The Vegetarian",
+    desc: "Traditional pizza with tomato, yellow onion, garlic & broccoli",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "Olive Special",
+    desc: "Traditional pizza with artichoke, black olives, garlic & basil",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The Joe Namath",
+    desc: "A pesto base, with mozzarella, tomato, garlic, & basil",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "La Bruschetta",
+    desc: "Tomato & garlic base, sharp provolone, mozzarella, sun-dried tomato pesto & basil",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "Garden of Eden",
+    desc: "Fresh spinach, fresh tomato, mozzarella, pizza sauce, ricotta dollops & topped with feta",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "The Godfather",
+    desc: "Ricotta base with a hint of garlic, mozzarella, fresh tomato, sun-dried tomatoes & pesto",
+    prices: '10" GF 15.49 | 12" GF 16.99 | 14" 23.99 | 18" 38.99 | XL 49.99',
+  },
+  {
+    name: "The Greek",
+    desc: "Pesto & fresh spinach base, mozzarella, olives, sun-dried tomato, red onions and feta",
+    prices: '10" GF 15.49 | 12" GF 16.99 | 14" 23.99 | 18" 38.99 | XL 49.99',
+  },
+  {
+    name: "Rumble in D'bronx",
+    desc: "Traditional cheese pizza with pineapple, bacon & jalapeno",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "Buffalo Chicken",
+    desc: "Ranch sauce base, red onion, seasoned chicken, mozzarella, & buffalo sauce!!",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "New Amsterdam",
+    desc: "Traditional pizza with mushroom, sausage, yellow onions, & pepperoni",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The BBQ Pizza",
+    desc: "Traditional cheese pizza with chicken, bacon & red onion, then BBQ sauce on top",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "Off-Broadway",
+    desc: "Traditional pizza with mushroom, sausage, green bell pepper & yellow onion",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The 'Roni Special",
+    desc: "Traditional cheese pizza with pepperoni, basil, tomato & garlic",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The Wise Guy",
+    desc: "Traditional pizza with sausage, green peppers, yellow onions & garlic",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The Hawaii 5-0",
+    desc: "A traditional ham and pineapple pizza with bacon & BBQ sauce added",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "The B.L.T",
+    desc: "A ranch based pizza with fresh spinach, bacon, tomato & mozzarella",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "4 Meat Special",
+    desc: "Traditional pizza with pepperoni, sausage, salami & bacon",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "Tony Soprano",
+    desc: "Traditional pizza with mushroom, sausage, red onion & ricotta",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "The Guido",
+    desc: "Traditional pizza with sausage, green peppers, red peppers, red onion & pepperoncini",
+    prices: '10" GF 13.49 | 12" GF 14.99 | 14" 21.99 | 18" 36.99 | XL 47.99',
+  },
+  {
+    name: "Chicken Club",
+    desc: "A ranch sauce base, mozzarella, tomato, red onion, chicken & bacon",
+    prices: '10" GF 14.99 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "Florentine",
+    desc: "Fresh spinach, chicken, roasted garlic, provolone, & garlic butter under mozzarella",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "Pesto Paradise",
+    desc: "A pesto based pizza with fresh spinach, mushroom, bacon, red onion & mozzarella",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "Manhattan",
+    desc: "Pesto base pizza with fresh tomatoes, sundried tomatoes, artichoke hearts & chicken topped with mozzarella",
+    prices: '10" GF 14.49 | 12" GF 15.99 | 14" 22.99 | 18" 37.99 | XL 48.99',
+  },
+  {
+    name: "New York Combo",
+    desc: "Traditional pizza with pepperoni, mushroom, sausage, salami, green bell pepper, black olives & yellow onion",
+    prices: '10" GF 15.49 | 12" GF 16.99 | 14" 23.99 | 18" 38.99 | XL 49.99',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Navigation client:load />
+
+  <main class="menu-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">Our Menu</h1>
+        <p class="page-subtitle">Delicious, fresh, and made to order.</p>
+      </header>
+
+      <!-- Traditional Cheese Pizza -->
+      <MenuSection
+        title="Traditional Cheese Pizza"
+        subtitle="Build your own masterpiece"
+      >
+        <div class="menu-grid-2">
+          <div class="menu-card">
+            <h4 class="card-title">Classic Sizes</h4>
+            <ul class="price-list">
+              <li><span>14" Traditional Cheese</span><span>19.99</span></li>
+              <li><span>18" Traditional Cheese</span><span>29.99</span></li>
+              <li><span>XL Traditional Cheese</span><span>38.99</span></li>
+              <li><span>Paul's Sicilian Crust</span><span>34.99</span></li>
+            </ul>
+            <p class="menu-note">
+              *Add $5 to your favorite 18" specialty pizza price for Sicilian
+            </p>
+          </div>
+          <div class="menu-card">
+            <h4 class="card-title">Specialty Crusts</h4>
+            <div class="alert">
+              <strong>Note:</strong> For Dine-In Orders Only!!
+            </div>
+            <ul class="price-list">
+              <li>
+                <span>10" Gluten-Free Cauliflower</span><span>12.49</span>
+              </li>
+              <li><span>12" Gluten-Free Crust</span><span>13.49</span></li>
+              <li><span>California Crust (12")</span><span>17.99</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="menu-card toppings-card">
+          <h4 class="card-title">Toppings & Prices</h4>
+          <div class="toppings-grid">
+            <div>
+              <h5>Topping Pricing</h5>
+              <ul class="topping-prices">
+                <li><span>10"</span><span>$1.00 - $2.50</span></li>
+                <li><span>12" & CA</span><span>$1.50 - $3.50</span></li>
+                <li><span>14"</span><span>$2.00 - $4.00</span></li>
+                <li><span>18"</span><span>$3.00 - $5.00</span></li>
+                <li><span>XL</span><span>$3.50 - $5.50</span></li>
+                <li><span>Sicilian</span><span>$3.00 - $5.00</span></li>
+              </ul>
+            </div>
+            <div>
+              <h5>Available Toppings</h5>
+              <p class="toppings-list">
+                Pepperoni, Italian Sausage, Garlic, Roasted Garlic, Tomato,
+                Pesto, Black Olive, Ham, Pineapple, Salami, Mushroom, Broccoli,
+                Bacon, Provolone, Meatball, Yellow Onion, Red Onion, Sauteed
+                Spinach, Fresh Spinach, Jalapeno, Sun-Dried Tomato, Artichoke
+                Hearts, Basil, Pepperoncini, Garlic Butter, Red Bell Peppers,
+                Green Bell Peppers, Extra-Mozzarella, Cheddar, Bleu Cheese
+                Crumble, Feta, Ricotta, Chicken, Anchovy, Pulled Pork, &
+                Seasonal Items.
+              </p>
+            </div>
+          </div>
+        </div>
+      </MenuSection>
+
+      <!-- Double Crusted Specialty Pizzas -->
+      <MenuSection title="Double Crusted Specialty Pizzas">
+        <div class="menu-grid-2">
+          <div class="menu-card specialty-card">
+            <h4 class="specialty-name">The Brooklyn</h4>
+            <p class="specialty-desc">
+              Double crusted pie filled with sautéed spinach, garlic, ricotta &
+              mozzarella.
+            </p>
+            <div class="specialty-prices">
+              14": $23.99 | 18": $38.99 | XL: $49.99
+            </div>
+          </div>
+          <div class="menu-card specialty-card">
+            <h4 class="specialty-name">The Hitman</h4>
+            <p class="specialty-desc">
+              Double crusted with sauce, pepperoni, salami, bacon, sausage &
+              mozzarella.
+            </p>
+            <div class="specialty-prices">
+              14": $23.99 | 18": $38.99 | XL: $49.99
+            </div>
+          </div>
+        </div>
+      </MenuSection>
+
+      <!-- Paul's Specialty Pizzas -->
+      <MenuSection
+        title="Paul's Specialty Pizzas"
+        subtitle="Available in 10in GF, 12in GF, 14in, 18in, and XL sizes"
+      >
+        <div class="specialty-grid">
+          {
+            specialtyPizzas.map((pizza) => (
+              <div class="menu-card specialty-card-sm">
+                <h4 class="specialty-name">{pizza.name}</h4>
+                <p class="specialty-desc">{pizza.desc}</p>
+                <div class="specialty-prices-sm">{pizza.prices}</div>
+              </div>
+            ))
+          }
+        </div>
+      </MenuSection>
+
+      <!-- Two Column: Rolls/Calzones & Salads -->
+      <div class="menu-two-col">
+        <!-- Pizza Rolls & Calzones -->
+        <div>
+          <MenuSection title="Pizza Rolls">
+            <p class="menu-note">*Additional items $1 - $2</p>
+            <MenuItem
+              name="Sausage Roll"
+              description="Italian sausage, green bell pepper, yellow onion, red sauce & mozzarella wrapped in dough."
+              price="$12.49"
+            />
+            <MenuItem
+              name="Veggie Roll"
+              description="Mushroom, green bell pepper, black olives, yellow onion, red sauce & mozzarella wrapped in dough."
+              price="$12.49"
+            />
+          </MenuSection>
+
+          <MenuSection title="Calzones">
+            <p class="calzone-desc">
+              A pocket of dough stuffed generously with ricotta and mozzarella
+              cheese. Marinara on the side!
+            </p>
+            <MenuItem name="Mini-Vinnie Calzone" price="$10.49" />
+            <MenuItem name="Large Calzone" price="$18.49" />
+          </MenuSection>
+        </div>
+
+        <!-- Salads -->
+        <div>
+          <MenuSection title="Salads">
+            <p class="menu-note">Served with a dinner bread</p>
+            <MenuItem
+              name="Dinner Salad"
+              description="Spring mix, red onion, grape tomato, romano & croutons"
+              prices="Sm $7.99 | Lg $9.49"
+            />
+            <MenuItem
+              name="Garden Salad"
+              description="Spring mix, artichoke, black olives, mushroom, provolone, jalapeños, tomato & romano"
+              price="$14.49"
+            />
+            <MenuItem
+              name="Antipasto Salad"
+              description="Spring mix, artichoke, olives, mushroom, provolone, salami, pepperoni, sun-dried tomato & romano"
+              price="$16.99"
+            />
+            <MenuItem
+              name="Caesar Salad"
+              description="Romaine, caesar dressing, tomato, provolone, croutons & romano"
+              price="$13.99"
+              note="+ Bacon $2.99 | + Chicken $3.99 | + Breaded Chicken $5.49"
+            />
+            <MenuItem
+              name="Buffalo Salad"
+              description="Spring mix, bleu cheese, red onion, four buffalo chicken tenders"
+              price="$16.99"
+            />
+          </MenuSection>
+        </div>
+      </div>
+
+      <!-- Two Column: Entrees & Hot Sandwiches -->
+      <div class="menu-two-col">
+        <!-- Entrees -->
+        <div>
+          <MenuSection title="Entrees & Pasta">
+            <p class="menu-note">
+              Includes Small Dinner Salad, Garlic Bread, or Dinner Breads
+            </p>
+            <MenuItem
+              name="Beef Lasagna"
+              description="Seasoned beef, ricotta, marinara, mozzarella, parsley & romano."
+              price="$18.99"
+            />
+            <MenuItem
+              name="Spinach Lasagna"
+              description="Sautéed spinach, ricotta, marinara, mozzarella."
+              price="$18.49"
+            />
+            <MenuItem
+              name="Chicken Parmigiana"
+              description="Breaded chicken breast, marinara, mozzarella on spaghetti."
+              price="$18.49"
+            />
+            <MenuItem
+              name="Eggplant Parmigiana (Seasonal)"
+              description="Breaded eggplant, marinara, mozzarella on spaghetti."
+              price="$18.49"
+            />
+            <MenuItem
+              name="Baked Ziti"
+              description="Creamy marinara, mozzarella, parsley & romano."
+              price="$17.49"
+              note="+2 Meatballs $4 | +3 Meatballs $5"
+            />
+            <MenuItem
+              name="Deep-Fried Ravioli"
+              description="Eight cheese ravioli in marinara."
+              price="$17.49"
+            />
+            <MenuItem
+              name="Spaghetti Marinara"
+              price="$15.49"
+              note="+2 Meatballs $4 | +3 Meatballs $5"
+            />
+          </MenuSection>
+        </div>
+
+        <!-- Hot Sandwiches -->
+        <div>
+          <MenuSection title="Hot Sandwiches">
+            <p class="menu-note">
+              Served with French fries. Sub salad available with upcharge.
+            </p>
+            <MenuItem
+              name="Meatball Hero"
+              description="Homemade meatballs, marinara, mozzarella, parsley & romano."
+              price="$15.99"
+            />
+            <MenuItem
+              name="Chicken Parmigiana Hero"
+              description="Breaded chicken breast, marinara, mozzarella."
+              price="$15.99"
+            />
+            <MenuItem
+              name="Italian Sausage, Pepper & Onion Hero"
+              description="Sausage, bell peppers, onions, marinara, mozzarella."
+              price="$15.99"
+            />
+            <MenuItem
+              name="Chicken Dijon Hero"
+              description="Breaded chicken breast, mozzarella, tomato, onion, dijon ranch."
+              price="$13.99"
+            />
+          </MenuSection>
+
+          <MenuSection title="Breads">
+            <MenuItem
+              name="Garlic Bread (2)"
+              price="$4.99"
+              note="+ Cheese $0.50"
+            />
+            <MenuItem name="Dinner Breads (3)" price="$2.22" />
+            <MenuItem name="Garlic Knots (7)" price="$5.99" />
+          </MenuSection>
+        </div>
+      </div>
+
+      <!-- Four Column: Appetizers, Wings, Sides, Dessert -->
+      <div class="menu-four-col">
+        <!-- Appetizers -->
+        <div class="menu-card compact-card">
+          <h4 class="compact-title">Appetizers</h4>
+          <MenuItem
+            name="Mussels Marinara"
+            description="Hot & Spicy or Mild"
+            price="$14.49"
+          />
+          <MenuItem name="Deep Fried Ravioli (8)" price="$8.99" />
+          <MenuItem name="French Fries" price="$5.99" />
+          <MenuItem name="Sautéed Broccoli" price="$6.99" />
+        </div>
+
+        <!-- Wings -->
+        <div class="menu-card compact-card">
+          <h4 class="compact-title">Wings & Tenders</h4>
+          <MenuItem
+            name="Chicken Wings (12)"
+            description="Buffalo, BBQ, Thai, or Plain"
+            price="$14.99"
+          />
+          <MenuItem name="Chicken Tenders (4)" price="$8.99" />
+        </div>
+
+        <!-- Sides -->
+        <div class="menu-card compact-card">
+          <h4 class="compact-title">On The Side</h4>
+          <MenuItem
+            name="3 Meatballs in Marinara"
+            description="With romano & parsley"
+            price="$8.88"
+          />
+          <MenuItem
+            name="Pizza Sauce or Homemade Marinara"
+            description="Both available in two sizes"
+            price="Varies"
+          />
+          <MenuItem
+            name="Salad Dressing (2oz.)"
+            description="Any of 5 varieties"
+            price="$0.66"
+          />
+        </div>
+
+        <!-- Dessert -->
+        <div class="menu-card compact-card">
+          <h4 class="compact-title">Dessert</h4>
+          <MenuItem
+            name="Famous New York Cannoli"
+            description="Pastry shell stuffed with sweet ricotta & chocolate chips"
+            price="$7.99"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .menu-page {
+    padding: 3rem 0;
+    background-color: var(--color-off-white);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-subtitle {
+    color: var(--color-gray-500);
+    font-size: 1.125rem;
+  }
+
+  .menu-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    margin-bottom: 1rem;
+  }
+
+  .price-list {
+    list-style: none;
+  }
+
+  .price-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--color-gray-200);
+  }
+
+  .price-list li:last-child {
+    border-bottom: none;
+  }
+
+  .price-list span:last-child {
+    font-weight: 700;
+  }
+
+  .menu-note {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  .alert {
+    background-color: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: #92400e;
+    margin-bottom: 1rem;
+  }
+
+  .toppings-card {
+    margin-bottom: 2rem;
+  }
+
+  .toppings-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .toppings-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .toppings-grid h5 {
+    font-weight: 700;
+    color: var(--color-gray-700);
+    margin-bottom: 0.5rem;
+  }
+
+  .topping-prices {
+    list-style: none;
+    font-size: 0.875rem;
+  }
+
+  .topping-prices li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+  }
+
+  .toppings-list {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    line-height: 1.8;
+  }
+
+  .specialty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .specialty-card {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .specialty-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .specialty-card-sm {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-gray-100);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .specialty-name {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    margin-bottom: 0.5rem;
+  }
+
+  .specialty-desc {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .specialty-prices {
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: var(--color-gray-100);
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .specialty-prices-sm {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--color-gray-500);
+    background-color: var(--color-gray-50);
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .menu-two-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .menu-four-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .compact-card {
+    padding: 1rem;
+  }
+
+  .compact-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-pizza-red);
+    margin-bottom: 0.75rem;
+  }
+
+  .calzone-desc {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    margin-bottom: 1rem;
+  }
+</style>
